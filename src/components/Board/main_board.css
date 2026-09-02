@@ -1,0 +1,135 @@
+.ludo-game-screen {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 15px 25px;
+  overflow-x: hidden;
+}
+
+/* =========================
+   TOP HEADER
+========================= */
+.game-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-game-nav {
+  background: rgba(18, 22, 36, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.btn-game-nav:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.match-status-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(18, 22, 36, 0.85);
+  padding: 6px 24px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.live-badge {
+  font-size: 10px;
+  font-weight: 900;
+  color: #00e676;
+  letter-spacing: 1.5px;
+}
+
+.current-turn-indicator {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffd700;
+  margin-top: 2px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* =========================
+   GAME STAGE LAYOUT
+========================= */
+.game-stage {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 520px;
+  align-items: center;
+}
+
+.board-center-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-slot-empty {
+  width: 175px;
+  height: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .game-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 15px;
+  }
+
+  .side-column {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    max-width: 580px;
+    justify-content: space-around;
+  }
+
+  .left-column {
+    order: 1;
+  }
+
+  .board-center-area {
+    order: 2;
+  }
+
+  .right-column {
+    order: 3;
+  }
+}

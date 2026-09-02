@@ -1,0 +1,101 @@
+.ludo-dice-container {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.ludo-dice-container.active-roller {
+  cursor: pointer;
+  animation: diceWiggle 1.4s infinite ease-in-out;
+}
+
+.ludo-dice-container.active-roller:hover {
+  transform: scale(1.12);
+}
+
+.dice-box {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -3px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 2px solid #e0e0e0;
+}
+
+.dice-face-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Rolling animation */
+.ludo-dice-container.rolling .dice-box {
+  animation: roll3D 0.6s linear infinite;
+}
+
+.roll-prompt-badge {
+  position: absolute;
+  bottom: -10px;
+  background: linear-gradient(135deg, #ffd700, #ff9800);
+  color: #000;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  animation: badgePop 0.8s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes roll3D {
+  0% {
+    transform: rotate(0deg) scale(0.9);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.9);
+  }
+}
+
+@keyframes diceWiggle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-4deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(4deg);
+  }
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+

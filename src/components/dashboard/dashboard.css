@@ -1,0 +1,1011 @@
+/* ====================================================
+   LUDO KING AUTHENTIC DASHBOARD STYLING
+==================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', 'Segoe UI', Tahoma, sans-serif !important;
+  overflow-x: hidden;
+  user-select: none;
+  background: #060a18;
+}
+
+.lk-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ====================================================
+   1. TOP BAR
+==================================================== */
+.lk-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Profile Card */
+.lk-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10, 16, 38, 0.88);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 6px 14px 6px 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.lk-avatar-wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.lk-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  background: #1a223f;
+  object-fit: cover;
+}
+
+.lk-level-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -6px;
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  color: #000;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 1px 6px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+
+.lk-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lk-profile-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.lk-xp-bar-bg {
+  width: 90px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.lk-xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e676, #00b0ff);
+  border-radius: 6px;
+}
+
+.lk-vip-tag {
+  color: #ffd700;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* Center Logo */
+.lk-center-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lk-logo-image {
+  height: 65px;
+  filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.5));
+}
+
+.lk-logo-text {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ffd700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 0 3px 6px rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+/* Economy Panel */
+.lk-economy-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lk-currency-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 16, 38, 0.88);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 4px 6px 4px 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+
+.coin-badge {
+  border-color: #ffd700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.diamond-badge {
+  border-color: #00b0ff;
+  box-shadow: 0 4px 12px rgba(0, 176, 255, 0.3);
+}
+
+.curr-icon {
+  font-size: 16px;
+}
+
+.btn-add-currency {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00e676, #00b248);
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.btn-top-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(10, 16, 38, 0.88);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.btn-top-icon:hover {
+  transform: rotate(45deg);
+}
+
+/* ====================================================
+   2. MAIN CONTENT & 4-BOX GAME MODE CARDS
+==================================================== */
+.lk-main-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 25px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lk-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.lk-mode-card {
+  position: relative;
+  min-height: 160px;
+  border-radius: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 2px 6px rgba(255, 255, 255, 0.35);
+}
+
+.lk-mode-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Card Themes */
+.online-mode {
+  background: linear-gradient(135deg, #00c853, #1b5e20);
+  border-color: #69f0ae;
+}
+
+.friends-mode {
+  background: linear-gradient(135deg, #0288d1, #01579b);
+  border-color: #4fc3f7;
+}
+
+.computer-mode {
+  background: linear-gradient(135deg, #fbc02d, #f57f17);
+  border-color: #fff59d;
+}
+
+.computer-mode.active-highlight-gold {
+  border-color: #ffd700;
+  box-shadow: 0 0 25px rgba(251, 192, 45, 0.5), 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.passplay-mode {
+  background: linear-gradient(135deg, #ff5252, #c62828);
+  border-color: #ff8a80;
+}
+
+.passplay-mode.active-highlight {
+  border-color: #ffd700;
+  box-shadow: 0 0 30px rgba(255, 82, 82, 0.6), 0 15px 40px rgba(0, 0, 0, 0.6);
+  animation: pulseCardGlow 2s infinite alternate ease-in-out;
+}
+
+.card-top-ribbon {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 12px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  letter-spacing: 1px;
+}
+
+.card-top-ribbon.popular {
+  background: linear-gradient(135deg, #ffd700, #ff9100);
+  color: #000;
+}
+
+.card-visual-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-info h2 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-info p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.card-badge-footer {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.card-badge-footer.featured {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Event Banner */
+.lk-event-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 12px 24px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
+  transition: transform 0.2s;
+}
+
+.lk-event-banner:hover {
+  transform: translateY(-2px);
+}
+
+.event-icon {
+  font-size: 32px;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 16px;
+}
+
+.event-text strong {
+  color: #ffd700;
+  font-size: 15px;
+}
+
+.event-text span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.btn-event-spin {
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================
+   3. BOTTOM NAVIGATION BAR
+==================================================== */
+.lk-bottom-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(10, 16, 38, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.lk-nav-item {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.lk-nav-item:hover {
+  transform: translateY(-4px);
+  color: #ffd700;
+}
+
+.nav-icon {
+  font-size: 22px;
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.center-shop .nav-icon {
+  font-size: 26px;
+  color: #ffd700;
+}
+
+/* ====================================================
+   4. PASS N PLAY & BOT SETUP MODALS
+==================================================== */
+.lk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.lk-royal-modal {
+  background: linear-gradient(135deg, #1b223c, #0d1224);
+  border: 3px solid #ffd700;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.35), 0 25px 60px rgba(0, 0, 0, 0.9);
+  animation: modalSlide 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #fff;
+}
+
+.lk-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+
+.lk-modal-header h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffd700;
+  letter-spacing: 1.5px;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.header-crown {
+  font-size: 24px;
+}
+
+.btn-modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-sub-section {
+  margin-bottom: 16px;
+}
+
+.sub-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* Color Picker for Bot Mode */
+.bot-color-picker {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.btn-color-choice {
+  flex: 1;
+  height: 48px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.btn-color-choice:hover {
+  transform: scale(1.05);
+}
+
+.btn-color-choice.selected {
+  border: 3px solid #fff;
+  transform: scale(1.08);
+}
+
+.check-mark {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Game Type Toggle */
+.game-type-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-type-pill {
+  flex: 1;
+  padding: 9px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-type-pill.active {
+  background: linear-gradient(135deg, #00b0ff, #0081cb);
+  border-color: #40c4ff;
+  box-shadow: 0 4px 12px rgba(0, 176, 255, 0.4);
+}
+
+/* Player Tabs */
+.player-tabs-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-count-card {
+  flex: 1;
+  padding: 10px 6px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s;
+}
+
+.btn-count-card.selected {
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  color: #000;
+  border-color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.tab-icon {
+  font-size: 20px;
+}
+
+.tab-text {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+/* 2-Player Choices */
+.two-player-selection {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-side-choice {
+  flex: 1;
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-side-choice.active {
+  border-color: #00e676;
+  background: rgba(0, 230, 118, 0.15);
+}
+
+.choice-tokens {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.choice-tokens .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.choice-tokens .dot.red { background: #e53935; }
+.choice-tokens .dot.yellow { background: #fdd835; }
+.choice-tokens .dot.green { background: #43a047; }
+.choice-tokens .dot.blue { background: #1e88e5; }
+
+.choice-tokens .vs-text {
+  font-size: 10px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.choice-name {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Name Rows */
+.player-names-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name-row-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  border-radius: 12px;
+}
+
+.pawn-badge {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.pawn-badge.red { background: #e53935; }
+.pawn-badge.green { background: #43a047; }
+.pawn-badge.yellow { background: #fdd835; }
+.pawn-badge.blue { background: #1e88e5; }
+
+.lk-name-field {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  width: 100%;
+  outline: none;
+}
+
+/* Big Green Play Button */
+.btn-big-play {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #00e676, #00b248);
+  border: 2px solid #b9f6ca;
+  border-radius: 16px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 230, 118, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-big-play.bot-play {
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  border-color: #fff;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.btn-big-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 230, 118, 0.7);
+}
+
+.play-icon {
+  font-size: 20px;
+}
+
+/* ====================================================
+   5. LUCKY SPIN WHEEL MODAL
+==================================================== */
+.lk-spin-modal-card {
+  background: linear-gradient(135deg, #2b1055, #11052C);
+  border: 3px solid #ffd700;
+  border-radius: 28px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+  animation: modalSlide 0.3s ease-out;
+}
+
+.spin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.spin-header h2 {
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.wheel-wrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 15px auto;
+}
+
+.spin-wheel-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #ffd700;
+  position: relative;
+  overflow: hidden;
+  background: conic-gradient(
+    #e53935 0deg 60deg,
+    #43a047 60deg 120deg,
+    #1e88e5 120deg 180deg,
+    #fdd835 180deg 240deg,
+    #ab47bc 240deg 300deg,
+    #ff9800 300deg 360deg
+  );
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.slice {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0% 0%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  padding-top: 10px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.slice-1 { transform: rotate(0deg); }
+.slice-2 { transform: rotate(60deg); }
+.slice-3 { transform: rotate(120deg); }
+.slice-4 { transform: rotate(180deg); color: #000; }
+.slice-5 { transform: rotate(240deg); }
+.slice-6 { transform: rotate(300deg); }
+
+.wheel-pointer {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  z-index: 10;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+}
+
+.spin-prize-banner {
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid #ffd700;
+  padding: 8px;
+  border-radius: 12px;
+  font-weight: 900;
+  color: #ffd700;
+  margin: 10px 0;
+  animation: pulseGlow 1s infinite alternate;
+}
+
+.btn-spin-action {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  border: none;
+  border-radius: 14px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-spin-action.spinning {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ====================================================
+   6. SETTINGS & ALERT MODALS
+==================================================== */
+.lk-settings-modal-card,
+.lk-alert-modal {
+  background: #12182b;
+  border: 2px solid #ffd700;
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.settings-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.settings-head h2 {
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffd700;
+  margin: 0;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn-sound-toggle {
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-sound-toggle.active {
+  background: #00e676;
+  color: #000;
+}
+
+.btn-sound-toggle.muted {
+  background: #e53935;
+  color: #fff;
+}
+
+.version-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.lk-alert-modal {
+  text-align: center;
+}
+
+.lk-alert-modal h3 {
+  color: #ffd700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.lk-alert-modal p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.btn-alert-ok {
+  padding: 10px 30px;
+  background: #00e676;
+  border: none;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes pulseCardGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 82, 82, 0.5), 0 12px 30px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.8), 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes modalSlide {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.98); }
+  100% { transform: scale(1.02); }
+}
+
+@media (max-width: 768px) {
+  .lk-top-bar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lk-modes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lk-mode-card {
+    min-height: 130px;
+  }
+}
