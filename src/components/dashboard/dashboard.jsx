@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
-import background from "../../assets/images/landscape.png";
 import logo from "../../assets/images/logo.png";
 import { audioManager } from "../../utils/audioManager";
+import { THEMES, getSavedTheme, saveTheme } from "../../utils/themeManager";
 
 const BOT_NAMES = {
   RED: "Bot Spark 🤖",
@@ -13,8 +13,10 @@ const BOT_NAMES = {
 };
 
 export default function Dashboard() {
+  const [currentTheme, setCurrentTheme] = useState(getSavedTheme);
   const [showPassPlayModal, setShowPassPlayModal] = useState(false);
   const [showVsComputerModal, setShowVsComputerModal] = useState(false);
+  const [showThemesModal, setShowThemesModal] = useState(false);
   const [showSpinModal, setShowSpinModal] = useState(false);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [showComingSoonModal, setShowComingSoonModal] = useState(null);
@@ -52,6 +54,17 @@ export default function Dashboard() {
     setShowVsComputerModal(true);
   };
 
+  const handleOpenThemes = () => {
+    audioManager.playButtonClick();
+    setShowThemesModal(true);
+  };
+
+  const handleSelectTheme = (theme) => {
+    audioManager.playButtonClick();
+    setCurrentTheme(theme);
+    saveTheme(theme.id);
+  };
+
   const handleNameChange = (colorKey, name) => {
     setPlayerNames((prev) => ({ ...prev, [colorKey]: name }));
   };
@@ -78,7 +91,7 @@ export default function Dashboard() {
       avatar: `https://api.dicebear.com/9.x/bottts/svg?seed=${playerNames[color] || color}`,
     }));
 
-    navigate("/board", { state: { playersConfig, playerCount, gameType } });
+    navigate("/board", { state: { playersConfig, playerCount, gameType, theme: currentTheme } });
   };
 
   // Start Vs Computer match (Human + AI Bots)
@@ -88,7 +101,6 @@ export default function Dashboard() {
 
     let activeColors = [];
     if (botPlayerCount === 2) {
-      // 2 Players: Human vs Opposite Color Bot
       const oppositeMap = {
         RED: "YELLOW",
         YELLOW: "RED",
@@ -98,7 +110,6 @@ export default function Dashboard() {
       activeColors = [userBotColor, oppositeMap[userBotColor]];
     } else if (botPlayerCount === 3) {
       const allColors = ["RED", "GREEN", "YELLOW", "BLUE"];
-      // Keep human color + next 2 colors
       const remaining = allColors.filter((c) => c !== userBotColor);
       activeColors = [userBotColor, remaining[0], remaining[1]];
     } else {
@@ -118,7 +129,7 @@ export default function Dashboard() {
       };
     });
 
-    navigate("/board", { state: { playersConfig, playerCount: botPlayerCount, gameType } });
+    navigate("/board", { state: { playersConfig, playerCount: botPlayerCount, gameType, theme: currentTheme } });
   };
 
   // Lucky Spin Wheel
@@ -146,7 +157,7 @@ export default function Dashboard() {
     <div
       className="lk-dashboard"
       style={{
-        backgroundImage: `radial-gradient(circle at 50% 30%, rgba(20, 32, 70, 0.78) 0%, rgba(6, 10, 24, 0.96) 100%), url(${background})`,
+        backgroundImage: currentTheme.dashboardBg,
       }}
     >
       {/* ====================================================
@@ -302,7 +313,7 @@ export default function Dashboard() {
           <span className="nav-label">Missions</span>
         </button>
 
-        <button className="lk-nav-item" onClick={() => setShowComingSoonModal("Dice & Themes")}>
+        <button className="lk-nav-item active-theme-btn" onClick={handleOpenThemes}>
           <span className="nav-icon">🎨</span>
           <span className="nav-label">Themes</span>
         </button>
@@ -314,7 +325,6 @@ export default function Dashboard() {
       {showPassPlayModal && (
         <div className="lk-modal-overlay">
           <div className="lk-royal-modal">
-            {/* Modal Header */}
             <div className="lk-modal-header">
               <span className="header-crown">👑</span>
               <h2>PASS N PLAY</h2>
@@ -327,7 +337,7 @@ export default function Dashboard() {
             </div>
 
             <div className="lk-modal-content">
-              {/* Game Mode Selector: Classic vs Rush */}
+              {/* Game Mode Selector */}
               <div className="modal-sub-section">
                 <span className="sub-title">SELECT GAME TYPE</span>
                 <div className="game-type-toggle">
@@ -449,12 +459,11 @@ export default function Dashboard() {
       )}
 
       {/* ====================================================
-          5. VS COMPUTER SETUP MODAL (NEW AI BOTS)
+          5. VS COMPUTER SETUP MODAL
          ==================================================== */}
       {showVsComputerModal && (
         <div className="lk-modal-overlay">
           <div className="lk-royal-modal bot-modal">
-            {/* Modal Header */}
             <div className="lk-modal-header">
               <span className="header-crown">🤖</span>
               <h2>VS COMPUTER</h2>
@@ -556,7 +565,63 @@ export default function Dashboard() {
       )}
 
       {/* ====================================================
-          6. LUCKY SPIN WHEEL MODAL
+          6. THEMES & BOARD SKINS MODAL (NEW)
+         ==================================================== */}
+      {showThemesModal && (
+        <div className="lk-modal-overlay" onClick={() => setShowThemesModal(false)}>
+          <div className="lk-royal-modal themes-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="lk-modal-header">
+              <span className="header-crown">🎨</span>
+              <h2>THEMES & BOARD SKINS</h2>
+              <button className="btn-modal-close" onClick={() => setShowThemesModal(false)}>
+                ✕
+              </button>
+            </div>
+
+            <div className="themes-grid-container">
+              {THEMES.map((theme) => {
+                const isSelected = currentTheme.id === theme.id;
+                return (
+                  <div
+                    key={theme.id}
+                    className={`theme-card-item ${isSelected ? "active-theme" : ""}`}
+                    style={{
+                      borderColor: isSelected ? theme.accentColor : "rgba(255, 255, 255, 0.15)",
+                    }}
+                    onClick={() => handleSelectTheme(theme)}
+                  >
+                    <div
+                      className="theme-preview-box"
+                      style={{ background: theme.previewGradient }}
+                    >
+                      <span className="theme-card-icon">{theme.icon}</span>
+                      {isSelected && <span className="theme-badge-equipped">EQUIPPED</span>}
+                    </div>
+
+                    <div className="theme-info-box">
+                      <h4>{theme.name}</h4>
+                      <p>{theme.description}</p>
+                    </div>
+
+                    <button
+                      className={`btn-equip-theme ${isSelected ? "equipped" : ""}`}
+                      style={{
+                        background: isSelected ? theme.accentColor : "rgba(255,255,255,0.12)",
+                        color: isSelected ? "#000" : "#fff",
+                      }}
+                    >
+                      {isSelected ? "✓ EQUIPPED" : "USE THEME"}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ====================================================
+          7. LUCKY SPIN WHEEL MODAL
          ==================================================== */}
       {showSpinModal && (
         <div className="lk-modal-overlay" onClick={() => !isSpinning && setShowSpinModal(false)}>
@@ -606,7 +671,7 @@ export default function Dashboard() {
       )}
 
       {/* ====================================================
-          7. SETTINGS MODAL
+          8. SETTINGS MODAL
          ==================================================== */}
       {showSettingsModal && (
         <div className="lk-modal-overlay" onClick={() => setShowSettingsModal(false)}>
@@ -641,7 +706,7 @@ export default function Dashboard() {
       )}
 
       {/* ====================================================
-          8. COMING SOON NOTICE MODAL
+          9. COMING SOON NOTICE MODAL
          ==================================================== */}
       {showComingSoonModal && (
         <div className="lk-modal-overlay" onClick={() => setShowComingSoonModal(null)}>

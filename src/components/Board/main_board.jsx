@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./main_board.css";
-import background from "../../assets/images/wooden_board.png";
 import LudoBoard from "./LudoBoard";
 import PlayerCard from "./PlayerCard";
 import VictoryModal from "../Modals/VictoryModal";
@@ -16,6 +15,7 @@ import {
 } from "../../utils/ludoLogic";
 import { chooseBestBotMove } from "../../utils/ludoAI";
 import { audioManager } from "../../utils/audioManager";
+import { getSavedTheme } from "../../utils/themeManager";
 
 const DEFAULT_PLAYERS = [
   { id: "RED", name: "Player 1", color: "RED", isBot: false, avatar: "https://api.dicebear.com/9.x/bottts/svg?seed=RED" },
@@ -27,6 +27,8 @@ const DEFAULT_PLAYERS = [
 export default function Main_Board() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const currentTheme = location.state?.theme || getSavedTheme();
 
   // Players configuration from Dashboard (2, 3, or 4 players; with possible Bots)
   const players = location.state?.playersConfig || DEFAULT_PLAYERS;
@@ -353,7 +355,7 @@ export default function Main_Board() {
     <div
       className="ludo-game-screen"
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(${background})`,
+        backgroundImage: currentTheme.boardBg,
       }}
     >
       {/* Top Game Navigation Header */}
